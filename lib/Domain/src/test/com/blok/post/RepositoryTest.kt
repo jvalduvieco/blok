@@ -82,11 +82,17 @@ class RepositoryTest {
     fun iCanDeleteAPostWithComments() {
         val post: Post = Post.create("title", "author", listOf("lorem", "ipsum"))
         val comment: Comment = post.addComment("lorem", "author")
+        var exceptionThrown: Boolean = false
         postRepository.save(post)
         postRepository.save(comment)
         postRepository.deletePost(post.id)
         assertFalse(postRepository.existPost(post.id))
-        assertTrue(postRepository.getAllCommentsOn(post.id).isEmpty())
+        try {
+            assertTrue(postRepository.getAllCommentsOn(post.id).isEmpty())
+        } catch (e: Throwable) {
+            exceptionThrown = true
+        }
+        assertTrue(exceptionThrown)
     }
 
 }
