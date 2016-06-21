@@ -18,7 +18,8 @@ You need a PostgreSQL database. Run on it the code listed in the directory db.
 Now run the application. You can specify where to find your database, for example:
 
 ```
-mvn exec:java -Dexec.args="--db-host myDBServer --db-port 5432"
+mvn install
+mvn exec:java -pl apps/Api -Dexec.args="--db-host myDBServer --db-port 5432"
 ```
 
 To adjust log level:
