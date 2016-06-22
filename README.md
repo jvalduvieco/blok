@@ -2,7 +2,7 @@ Blok - Joan's playground
 ========================
 
 
-![Circle CI status](https://circleci.com/gh/jvalduvieco/blok/tree/master.svg?style=shield&circle-token=:circle-token)
+![Circle CI status](https://circleci.com/gh/jvalduvieco/blok/tree/master.svg?style=shield&circle-token=a16d67a1d04eb1b2429215265fe108bda2a866c1)
 
 Simple blog application built using CQRS, spark, postgres. More to come
 
