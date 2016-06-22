@@ -12,8 +12,8 @@ dependencies:
 
 database:
   override:
-    - psql postgres < ./lib/Domain/src/main/com/blok/post/Infrastructure/post.sql
-    - psql postgres < ./lib/Domain/src/test/com/blok/Infrastructure/JDBCConnectionTest.sql
+    - psql postgres < ./lib/Domain/src/main/pgsql/blog_post.sql
+    - psql postgres < ./lib/Domain/src/test/pgsql/JDBCConnectionTest.sql
 test:
   override:
     - mvn test
