@@ -1,4 +1,4 @@
-package test.com.blok.Infrastructure
+package com.blok.Infrastructure
 
 import com.github.andrewoma.kwery.core.DefaultSession
 import com.github.andrewoma.kwery.core.Row
@@ -13,10 +13,16 @@ import java.sql.Timestamp
 
 class JDBCConnectionTest {
     val session: DefaultSession
+    private val ConnectionURL = "jdbc:postgresql://localhost:5432/jdbc_infrastructure_test?"
+
+    private val databaseUser = "blog_owner"
+
+    private val databasePassword = "sparkforthewin"
+
     init {
         Class.forName( "org.postgresql.Driver" )
         val connection: Connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/blog?","blog_owner","sparkforthewin" )
+                ConnectionURL, databaseUser, databasePassword)
         session = DefaultSession(connection, PostgresDialect())
     }
     data class Actor(val firstName: String, val lastName: String?, val id: Int = 0, val lastUpdate: Timestamp = Timestamp(System.currentTimeMillis()))
@@ -51,8 +57,8 @@ class JDBCConnectionTest {
     fun iCanConnectToPostgresUsingJDBC() {
         Class.forName( "org.postgresql.Driver" )
         val connection: Connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/blog?","blog_owner","sparkforthewin" )
-        val session = DefaultSession(connection, PostgresDialect())
+                ConnectionURL, databaseUser, databasePassword)
+        DefaultSession(connection, PostgresDialect())
     }
 
     @Test

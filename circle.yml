@@ -1,0 +1,22 @@
+machine:
+  services:
+    - postgresql
+  timezone:
+    Etc/GMT0
+  java:
+    version: oraclejdk8
+
+dependencies:
+  override:
+    - mvn --fail-never dependency:go-offline || true
+
+database:
+  override:
+    - psql postgres < ./lib/Domain/src/main/com/blok/post/Infrastructure/post.sql
+    - psql postgres < ./lib/Domain/src/test/com/blok/Infrastructure/JDBCConnectionTest.sql
+test:
+  override:
+    - mvn test
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;

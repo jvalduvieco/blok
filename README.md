@@ -1,6 +1,9 @@
 Blok - Joan's playground
 ========================
 
+
+![Circle CI status](https://circleci.com/gh/jvalduvieco/blok/tree/master.svg?style=shield&circle-token=:circle-token)
+
 Simple blog application built using CQRS, spark, postgres. More to come
 
 I started from:
